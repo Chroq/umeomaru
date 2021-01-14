@@ -1,0 +1,48 @@
+
+Tables:
+
+costume
+uuid
+
+costume_feature
+
+costume_flaw
+costume_flaw_media
+
+piec
+uuide
+
+material
+uuid
+
+costume_mockup
+uuid
+
+costume_media
+- uuid
+- type [wear, unwear]
+
+costume_designor
+costume_maker
+
+place
+
+role
+
+actor
+- people 	-> actor
+
+performance
+- type
+- createdAt
+- people 	-> director
+		-> choreographer
+
+people
+- first name
+- last name
+- biography
+- link
+- birth place
+- death place
+
