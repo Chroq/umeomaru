@@ -2,28 +2,20 @@
 Tables:
 
 costume
-uuid
-
-costume_feature
-
-costume_flaw
-costume_flaw_media
-
-piec
-uuide
-
-material
-uuid
-
-costume_mockup
-uuid
+uuid: uuid
+feature: json
+flaw: json {media}
+mockup: json {media}
 
 costume_media
 - uuid
 - type [wear, unwear]
 
-costume_designor
-costume_maker
+piece
+uuid
+
+material
+uuid
 
 place
 
@@ -45,4 +37,5 @@ people
 - link
 - birth place
 - death place
+- role : {actor, maker, designer, director, choregrapher}
 
