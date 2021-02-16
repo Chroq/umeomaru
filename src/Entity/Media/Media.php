@@ -13,20 +13,20 @@ class Media
     /**
      * @ORM\Column(type="ulid")
      */
-    protected UlidType $ulid;
+    protected ?UlidType $id = null;
 
     protected string $path;
 
     protected JsonType $metadata;
 
-    public function getUlid(): UlidType
+    public function getId(): UlidType
     {
-        return $this->ulid;
+        return $this->id;
     }
 
-    public function setUlid(UlidType $ulid): Media
+    public function setId(UlidType $ulid): Media
     {
-        $this->ulid = $ulid;
+        $this->id = $ulid;
         return $this;
     }
 
@@ -38,6 +38,7 @@ class Media
     public function setPath(string $path): Media
     {
         $this->path = $path;
+
         return $this;
     }
 
@@ -49,6 +50,7 @@ class Media
     public function setMetadata(JsonType $metadata): Media
     {
         $this->metadata = $metadata;
+
         return $this;
     }
 }

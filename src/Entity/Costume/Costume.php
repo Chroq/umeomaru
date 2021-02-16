@@ -4,13 +4,16 @@ namespace App\Entity\Costume;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\DBAL\Types\JsonType;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UlidType;
 
 #[ApiResource]
 class Costume
 {
-
-    protected UlidType $ulid;
+    /**
+     * @ORM\Column(type="ulid")
+     */
+    protected ?UlidType $id = null;
 
     protected JsonType $features;
 
@@ -18,14 +21,14 @@ class Costume
 
     protected JsonType $mockups;
 
-    public function getUlid(): UlidType
+    public function getId(): UlidType
     {
-        return $this->ulid;
+        return $this->id;
     }
 
-    public function setUlid(UlidType $ulid): Costume
+    public function setId(UlidType $id): Costume
     {
-        $this->ulid = $ulid;
+        $this->id = $id;
 
         return $this;
     }
@@ -62,7 +65,7 @@ class Costume
     public function setMockups(JsonType $mockups): Costume
     {
         $this->mockups = $mockups;
-        
+
         return $this;
     }
 
