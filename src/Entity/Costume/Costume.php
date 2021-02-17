@@ -7,18 +7,31 @@ use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UlidType;
 
+/**
+ * @ORM\Entity
+ */
 #[ApiResource]
 class Costume
 {
     /**
+     * @ORM\Id
      * @ORM\Column(type="ulid")
      */
     protected ?UlidType $id = null;
 
+    /**
+     * @ORM\Column(type="json")
+     */
     protected JsonType $features;
 
+    /**
+     * @ORM\Column(type="json")
+     */
     protected JsonType $flaws;
 
+    /**
+     * @ORM\Column(type="json")
+     */
     protected JsonType $mockups;
 
     public function getId(): UlidType

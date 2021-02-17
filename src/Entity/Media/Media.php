@@ -7,16 +7,26 @@ use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UlidType;
 
+/**
+ * @ORM\Entity
+ */
 #[ApiResource]
 class Media
 {
     /**
+     * @ORM\Id
      * @ORM\Column(type="ulid")
      */
     protected ?UlidType $id = null;
 
+    /**
+     * @ORM\Column
+     */
     protected string $path;
 
+    /**
+     * @ORM\Column(type="json")
+     */
     protected JsonType $metadata;
 
     public function getId(): UlidType
