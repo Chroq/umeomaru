@@ -5,6 +5,7 @@ namespace App\Entity\Costume;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
 use Symfony\Bridge\Doctrine\Types\UlidType;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,7 +17,9 @@ class Costume
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="ulid")
+     * @ORM\Column(type="ulid", unique=true)
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class=UlidGenerator::class)
      */
     protected ?UlidType $id = null;
 
