@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UlidType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -18,6 +19,12 @@ class Costume
      * @ORM\Column(type="ulid")
      */
     protected ?UlidType $id = null;
+
+    #[Assert\NotBlank]
+    /**
+     * @ORM\Column
+     */
+    protected string $name;
 
     /**
      * @ORM\Column(type="json")
@@ -82,4 +89,15 @@ class Costume
         return $this;
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): Costume
+    {
+        $this->name = $name;
+
+        return $this;
+    }
 }
