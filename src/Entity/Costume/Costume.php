@@ -6,7 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
-use Symfony\Bridge\Doctrine\Types\UlidType;
+use Symfony\Component\Uid\Ulid;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -21,7 +21,7 @@ class Costume
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class=UlidGenerator::class)
      */
-    protected ?UlidType $id = null;
+    protected ?Ulid $id = null;
 
     #[Assert\NotBlank]
     /**
@@ -29,27 +29,30 @@ class Costume
      */
     protected string $name;
 
+    #[Assert\Json]
     /**
      * @ORM\Column(type="json")
      */
     protected JsonType $features;
 
+    #[Assert\Json]
     /**
      * @ORM\Column(type="json")
      */
     protected JsonType $flaws;
 
+    #[Assert\Json]
     /**
      * @ORM\Column(type="json")
      */
     protected JsonType $mockups;
 
-    public function getId(): UlidType
+    public function getId(): Ulid
     {
         return $this->id;
     }
 
-    public function setId(UlidType $id): Costume
+    public function setId(Ulid $id): Costume
     {
         $this->id = $id;
 
