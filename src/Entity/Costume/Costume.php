@@ -6,13 +6,16 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Uid\Ulid;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  */
-#[ApiResource]
+#[ApiResource(
+
+)]
 class Costume
 {
     /**
@@ -29,19 +32,16 @@ class Costume
      */
     protected string $name;
 
-    #[Assert\Json]
     /**
      * @ORM\Column(type="json")
      */
     protected JsonType $features;
 
-    #[Assert\Json]
     /**
      * @ORM\Column(type="json")
      */
     protected JsonType $flaws;
 
-    #[Assert\Json]
     /**
      * @ORM\Column(type="json")
      */
